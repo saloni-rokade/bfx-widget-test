@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Serenity Medical Spa — Book Online</title>
+
+  <!-- BoomerangFX Online Booking Widget — Step 2: load in <head> with defer -->
+  <script src="https://YOUR-STAGING-DOMAIN.com/widget.js" defer></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: #FAF7F4;
+      color: #2C2C2C;
+    }
+
+    /* ── Clinic navigation bar ─────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 0 48px;
+      height: 68px;
+      background: #fff;
+      border-bottom: 1px solid #E8E0D6;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .nav-logo {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #9B6B4A, #C9956E);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .nav-brand-name {
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #2C2C2C;
+    }
+
+    .nav-brand-tagline {
+      font-size: 11px;
+      color: #9E8A78;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #5C5C5C;
+      font-size: 14.5px;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-weight: 500;
+      transition: color .15s;
+    }
+
+    .nav-links a:hover { color: #9B6B4A; }
+    .nav-links .active { color: #9B6B4A; font-weight: 600; }
+
+    .nav-cta {
+      background: #9B6B4A;
+      color: #fff !important;
+      padding: 9px 22px;
+      border-radius: 999px;
+      font-size: 13.5px !important;
+      font-weight: 600 !important;
+    }
+
+    .nav-cta:hover { background: #7D5238; color: #fff !important; }
+
+    /* ── Hero banner ───────────────────────────────────────────── */
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      padding: 72px 80px;
+      background: linear-gradient(120deg, #FFF8F3 0%, #F5EDE4 100%);
+      border-bottom: 1px solid #EDE0D4;
+    }
+
+    .hero-text { flex: 1; }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 11.5px;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #9B6B4A;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: #1C1C1C;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 16px;
+      color: #6B6B6B;
+      line-height: 1.7;
+      max-width: 480px;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .hero-badges {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .hero-badge {
+      font-size: 12px;
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #fff;
+      border: 1px solid #D8C8BC;
+      border-radius: 999px;
+      padding: 6px 14px;
+      color: #5C5C5C;
+      font-weight: 500;
+    }
+
+    .hero-image {
+      flex: 0 0 320px;
+      height: 280px;
+      background: linear-gradient(135deg, #D4A99A 0%, #B07860 100%);
+      border-radius: 24px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,.5);
+      font-size: 13px;
+      font-family: system-ui, sans-serif;
+    }
+
+    /* ── Booking section ───────────────────────────────────────── */
+    .booking-section {
+      padding: 64px 80px;
+    }
+
+    .section-header {
+      margin-bottom: 32px;
+    }
+
+    .section-eyebrow {
+      display: inline-block;
+      font-size: 11.5px;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #9B6B4A;
+      margin-bottom: 8px;
+    }
+
+    .section-header h2 {
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #1C1C1C;
+    }
+
+    .section-header p {
+      font-size: 15px;
+      color: #6B6B6B;
+      margin-top: 8px;
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.6;
+    }
+
+    /* ── Footer ─────────────────────────────────────────────────── */
+    footer {
+      margin-top: 80px;
+      padding: 32px 80px;
+      background: #2C2C2C;
+      color: rgba(255,255,255,.5);
+      font-size: 13px;
+      font-family: system-ui, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    footer strong { color: rgba(255,255,255,.8); }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { flex-direction: column; padding: 40px 24px; }
+      .hero-image { flex: 0 0 200px; width: 100%; }
+      .booking-section { padding: 40px 24px; }
+      footer { flex-direction: column; gap: 8px; padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Clinic navigation ──────────────────────────────────────── -->
+  <nav>
+    <a class="nav-brand" href="#">
+      <div class="nav-logo">S</div>
+      <div>
+        <div class="nav-brand-name">Serenity Medical Spa</div>
+        <div class="nav-brand-tagline">Aesthetic &amp; Wellness</div>
+      </div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Gallery</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#booking" class="nav-cta active">Book Now</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── Hero ──────────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero-text">
+      <span class="hero-eyebrow">Luxury Aesthetic Clinic</span>
+      <h1>Beauty,<br>reimagined.</h1>
+      <p>Expert aesthetic treatments tailored to you — from injectables and laser to full skin transformation programmes.</p>
+      <div class="hero-badges">
+        <span class="hero-badge">✦ Award-winning practitioners</span>
+        <span class="hero-badge">✦ 1 200+ 5-star reviews</span>
+        <span class="hero-badge">✦ 0% finance available</span>
+      </div>
+    </div>
+    <div class="hero-image">[ clinic image ]</div>
+  </section>
+
+  <!-- ── Booking section ───────────────────────────────────────── -->
+  <section class="booking-section" id="booking">
+    <div class="section-header">
+      <span class="section-eyebrow">Online Booking</span>
+      <h2>Book your appointment</h2>
+      <p>Choose your treatment, pick a time that suits you, and we'll take care of the rest.</p>
+    </div>
+
+    <!-- Step 1: BoomerangFX booking widget — place where you want the form to appear -->
+    <bfx-booking
+      ci="YOUR_CI_TOKEN"
+      sk="YOUR_SK_TOKEN"
+      api="https://YOUR-STAGING-BACKEND.com"
+    ></bfx-booking>
+  </section>
+
+  <!-- ── Footer ────────────────────────────────────────────────── -->
+  <footer>
+    <span><strong>Serenity Medical Spa</strong> — Aesthetic &amp; Wellness</span>
+    <span>&copy; 2026 Serenity Medical Spa. All rights reserved.</span>
+  </footer>
+
+</body>
+</html>
